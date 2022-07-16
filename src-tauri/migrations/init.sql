@@ -1,0 +1,1 @@
+CREATE TABLE notes (id INTEGER PRIMARY KEY, title TEXT, text TEXT, created_at datetime, updated_at datetime)

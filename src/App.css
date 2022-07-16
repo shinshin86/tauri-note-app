@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.NoteListContainer {
+  width: 30%;
+  height: 100vh;
+  border-right: 1px solid #eee;
+}
+
+.EditorContainer {
+  width: 70%;
+  height: 100vh;
+}
