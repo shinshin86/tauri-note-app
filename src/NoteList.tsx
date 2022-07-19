@@ -7,15 +7,21 @@ type Props = {
   setSelectedNoteId: Function;
   notes: Array<Note>;
   deleteNote: Function;
+  exportCsv: Function;
 };
 
 const NoteList: React.FC<Props> = (
-  { selectedNoteId, setSelectedNoteId, notes, deleteNote },
+  { selectedNoteId, setSelectedNoteId, notes, deleteNote, exportCsv },
 ) => {
   return (
     <div>
-      <div style={{ textAlign: "right" }}>
-        <button onClick={() => deleteNote(selectedNoteId)}>Delete</button>
+      <div style={{ display: "flex" }}>
+        <div>
+          <button onClick={() => exportCsv()}>Export CSV</button>
+        </div>
+        <div>
+          <button onClick={() => deleteNote(selectedNoteId)}>Delete</button>
+        </div>
       </div>
       <div style={{ overflowY: "auto", height: "90vh" }}>
         {notes.map(({ id, title, text, updatedAt }) => {
