@@ -1,6 +1,7 @@
 import "./App.css";
 import { Note } from "./App";
 import { getFormattedDate } from "./utils/date";
+import { useState } from "react";
 
 type Props = {
   selectedNoteId: number;
@@ -13,6 +14,14 @@ type Props = {
 const NoteList: React.FC<Props> = (
   { selectedNoteId, setSelectedNoteId, notes, deleteNote, exportCsv },
 ) => {
+  const [titleFilterText, setTitleFilterText] = useState("");
+
+  const filteredNotes = notes.filter((note) => {
+    return note.title.toLocaleLowerCase().includes(
+      titleFilterText.toLocaleLowerCase(),
+    );
+  });
+
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -23,8 +32,16 @@ const NoteList: React.FC<Props> = (
           <button onClick={() => deleteNote(selectedNoteId)}>Delete</button>
         </div>
       </div>
+      <div style={{ display: "grid" }}>
+        <input
+          id="titleFilterText"
+          name="titleFilterText"
+          value={titleFilterText}
+          onChange={(e) => setTitleFilterText(e.target.value)}
+        />
+      </div>
       <div style={{ overflowY: "auto", height: "90vh" }}>
-        {notes.map(({ id, title, text, updatedAt }) => {
+        {filteredNotes.map(({ id, title, text, updatedAt }) => {
           const formattedDate = getFormattedDate(updatedAt);
 
           return (
