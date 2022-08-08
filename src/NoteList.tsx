@@ -9,10 +9,18 @@ type Props = {
   notes: Array<Note>;
   deleteNote: Function;
   exportCsv: Function;
+  importCsv: Function;
 };
 
 const NoteList: React.FC<Props> = (
-  { selectedNoteId, setSelectedNoteId, notes, deleteNote, exportCsv },
+  {
+    selectedNoteId,
+    setSelectedNoteId,
+    notes,
+    deleteNote,
+    exportCsv,
+    importCsv,
+  },
 ) => {
   const [titleFilterText, setTitleFilterText] = useState("");
 
@@ -25,6 +33,9 @@ const NoteList: React.FC<Props> = (
   return (
     <div>
       <div style={{ display: "flex" }}>
+        <div>
+          <button onClick={() => importCsv()}>Import</button>
+        </div>
         <div>
           <button onClick={() => exportCsv()}>Export CSV</button>
         </div>

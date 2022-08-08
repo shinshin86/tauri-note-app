@@ -43,6 +43,15 @@ async function create({ title, text }: NewNote): Promise<Note> {
   };
 }
 
+async function bulkInsert(noteList: Array<Note>): Promise<void> {
+  for (const { title, text, createdAt, updatedAt } of noteList) {
+    await db.execute(
+      "INSERT INTO notes (title, text, created_at, updated_at) VALUES ($1, $2, $3, $4)",
+      [title, text, createdAt, updatedAt],
+    );
+  }
+}
+
 async function update(note: Note): Promise<Note> {
   const updatedAt = new Date();
   await db.execute(
@@ -63,4 +72,4 @@ async function remove(id: number): Promise<boolean> {
   return await db.execute("DELETE FROM notes WHERE id = $1", [id]);
 }
 
-export { create, remove, selectAll, update };
+export { bulkInsert, create, remove, selectAll, update };

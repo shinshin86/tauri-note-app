@@ -3,10 +3,11 @@ import "./App.css";
 import NoteList from "./NoteList";
 import Editor from "./Editor";
 import type { NewNote, Note } from "./types/Note";
-import { create, remove, selectAll, update } from "./models/notes";
-import { save } from "@tauri-apps/api/dialog";
+import { bulkInsert, create, remove, selectAll, update } from "./models/notes";
+import { open, save } from "@tauri-apps/api/dialog";
 import { writeTextFile } from "@tauri-apps/api/fs";
-import { stringify as csvStringify } from "./utils/csv";
+import { noteCsvParse, stringify as csvStringify } from "./utils/csv";
+import { readTextFile } from "@tauri-apps/api/fs";
 
 export type { Note };
 
@@ -69,6 +70,18 @@ function App() {
     }
   };
 
+  const importCsv = async () => {
+    const csvPath = await open();
+
+    if (csvPath) {
+      // @ts-ignore
+      const csvStr = await readTextFile(csvPath);
+      const noteList = await noteCsvParse(csvStr);
+      await bulkInsert(noteList);
+      await refreshAllNote();
+    }
+  };
+
   useEffect(() => {
     const load = async (): Promise<void> => {
       await refreshAllNote();
@@ -86,6 +99,7 @@ function App() {
           notes={notes}
           deleteNote={deleteNote}
           exportCsv={exportAllNotesCsv}
+          importCsv={importCsv}
         />
       </div>
       <div className="EditorContainer">
