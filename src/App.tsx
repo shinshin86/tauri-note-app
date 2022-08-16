@@ -9,6 +9,13 @@ import { writeTextFile } from "@tauri-apps/api/fs";
 import { stringify as csvStringify } from "./utils/csv";
 import { readTextFile } from "@tauri-apps/api/fs";
 import csvParse from "csv-parse-v";
+import {
+  isPermissionGranted,
+  requestPermission,
+  sendNotification,
+} from "@tauri-apps/api/notification";
+
+let permissionGranted = false;
 
 export type { Note };
 
@@ -75,11 +82,37 @@ function App() {
     const csvPath = await open();
 
     if (csvPath) {
-      // @ts-ignore
-      const csvStr = await readTextFile(csvPath);
-      const noteList = await csvParse(csvStr);
-      await bulkInsert(noteList);
-      await refreshAllNote();
+      try {
+        // @ts-ignore
+        const csvStr = await readTextFile(csvPath);
+        const noteList = await csvParse(csvStr);
+        await bulkInsert(noteList);
+        await refreshAllNote();
+
+        if (!permissionGranted) {
+          permissionGranted = await isPermissionGranted();
+          const permission = await requestPermission();
+          permissionGranted = permission === "granted";
+        }
+        if (permissionGranted) {
+          sendNotification({
+            title: "Import",
+            body: "Import of CSV data was successful.",
+          });
+        }
+      } catch (error) {
+        if (!permissionGranted) {
+          permissionGranted = await isPermissionGranted();
+          const permission = await requestPermission();
+          permissionGranted = permission === "granted";
+        }
+        if (permissionGranted) {
+          sendNotification({
+            title: "Import failed",
+            body: "Invalid csv data may have been passed.",
+          });
+        }
+      }
     }
   };
 

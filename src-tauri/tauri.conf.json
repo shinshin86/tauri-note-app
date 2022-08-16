@@ -22,6 +22,9 @@
         "all": false,
         "save": true,
         "open": true
+      },
+      "notification": {
+        "all": true
       }
     },
     "bundle": {
