@@ -15,12 +15,16 @@
       "all": false,
       "fs": {
         "all": false,
-        "readFile": false,
+        "readFile": true,
         "writeFile": true
       },
       "dialog": {
         "all": false,
-        "save": true
+        "save": true,
+        "open": true
+      },
+      "notification": {
+        "all": true
       }
     },
     "bundle": {

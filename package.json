@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.2",
+    "csv-parse-v": "^0.0.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql"
