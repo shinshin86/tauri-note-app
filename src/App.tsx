@@ -6,8 +6,9 @@ import type { NewNote, Note } from "./types/Note";
 import { bulkInsert, create, remove, selectAll, update } from "./models/notes";
 import { open, save } from "@tauri-apps/api/dialog";
 import { writeTextFile } from "@tauri-apps/api/fs";
-import { noteCsvParse, stringify as csvStringify } from "./utils/csv";
+import { stringify as csvStringify } from "./utils/csv";
 import { readTextFile } from "@tauri-apps/api/fs";
+import csvParse from "csv-parse-v";
 
 export type { Note };
 
@@ -76,7 +77,7 @@ function App() {
     if (csvPath) {
       // @ts-ignore
       const csvStr = await readTextFile(csvPath);
-      const noteList = await noteCsvParse(csvStr);
+      const noteList = await csvParse(csvStr);
       await bulkInsert(noteList);
       await refreshAllNote();
     }
