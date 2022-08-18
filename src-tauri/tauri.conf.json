@@ -69,10 +69,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
         "resizable": true,
         "title": "Note App",
-        "width": 800
+        "width": 800,
+        "height": 600,
+        "minWidth": 650,
+        "minHeight": 400
       }
     ]
   }
