@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Note } from "./types/Note";
+import { isChanged } from "./utils/editor";
 
 type Props = {
   note: Note | null;
@@ -8,6 +9,13 @@ type Props = {
   updateNote: Function;
   createNewNote: Function;
 };
+
+type PrevContent = {
+  title: string;
+  text: string;
+};
+
+let prevContent: PrevContent = { title: "", text: "" };
 
 const delay = 500;
 
@@ -17,6 +25,11 @@ const Editor: React.FC<Props> = (
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [title, setTitle] = useState<string>(note?.title || "");
   const [text, setText] = useState<string>(note?.text || "");
+
+  prevContent = {
+    title: note?.title || "",
+    text: note?.text || "",
+  };
 
   const debounceTimer: React.MutableRefObject<number | null> = useRef(null);
 
@@ -32,6 +45,8 @@ const Editor: React.FC<Props> = (
     debounceTimer.current = delay;
 
     debounceTimer.current = setTimeout(async () => {
+      if (!isChanged({ title, text }, prevContent)) return;
+
       if (selectedNote) {
         await updateNote({
           ...selectedNote,
