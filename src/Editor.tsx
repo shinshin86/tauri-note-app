@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import { Note } from "./types/Note";
+import { Note, NoteContent } from "./types/Note";
 import { isChanged } from "./utils/editor";
 
 type Props = {
@@ -10,12 +10,7 @@ type Props = {
   createNewNote: Function;
 };
 
-type PrevContent = {
-  title: string;
-  text: string;
-};
-
-let prevContent: PrevContent = { title: "", text: "" };
+let prevContent: NoteContent = { title: "", text: "" };
 
 const delay = 500;
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import NoteList from "./NoteList";
 import Editor from "./Editor";
-import type { NewNote, Note } from "./types/Note";
+import type { Note, NoteContent } from "./types/Note";
 import { bulkInsert, create, remove, selectAll, update } from "./models/notes";
 import { open, save } from "@tauri-apps/api/dialog";
 import { writeTextFile } from "@tauri-apps/api/fs";
@@ -25,7 +25,7 @@ function App() {
   const [selectedNoteId, setSelectedNoteId] = useState<number>(EMPTY_NOTE_ID);
   const [notes, setNotes] = useState<Array<Note>>([]);
 
-  const addNote = async ({ title, text }: NewNote): Promise<Note> => {
+  const addNote = async ({ title, text }: NoteContent): Promise<Note> => {
     const note = await create({ title, text });
 
     setSelectedNoteId(note.id);

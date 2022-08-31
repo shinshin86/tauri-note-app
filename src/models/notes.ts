@@ -1,5 +1,5 @@
 import Database from "tauri-plugin-sql-api";
-import type { NewNote, Note } from "../types/Note";
+import type { Note, NoteContent } from "../types/Note";
 
 let db: any = null;
 const load = Database.load("sqlite:note.db").then((instance) => {
@@ -25,7 +25,7 @@ async function selectAll(): Promise<Array<Note>> {
   return allNotes;
 }
 
-async function create({ title, text }: NewNote): Promise<Note> {
+async function create({ title, text }: NoteContent): Promise<Note> {
   const createDate = new Date();
   const createdAt = createDate;
   const updatedAt = createDate;

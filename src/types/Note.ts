@@ -6,7 +6,7 @@ export type Note = {
   updatedAt: Date;
 };
 
-export type NewNote = {
+export type NoteContent = {
   title: string;
   text: string;
 };
