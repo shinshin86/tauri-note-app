@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Note, NoteContent } from "./types/Note";
 import { isChanged } from "./utils/editor";
+import NoteEditor from "./NoteEditor";
 
 type Props = {
   note: Note | null;
@@ -82,13 +83,18 @@ const Editor: React.FC<Props> = (
           onChange={(e) => setTitle(e.target.value)}
           style={{ width: "100%" }}
         />
-        <textarea
-          id="text"
-          name="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          style={{ width: "100%", height: "85vh" }}
-        />
+        {
+          /*
+          <textarea
+            id="text"
+            name="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            style={{ width: "100%", height: "85vh" }}
+          />
+        */
+        }
+        <NoteEditor />
       </div>
     </div>
   );
