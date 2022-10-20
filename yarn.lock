@@ -903,6 +903,11 @@ resolve@^1.22.0:
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
+ress@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/ress/-/ress-5.0.2.tgz#bfe37c76cd8ca344ab69214bdeb677790a6d8730"
+  integrity sha512-oHBtOWo/Uc8SzQMbQNIKTcgi8wKmAs7IlNlRywmXudbOtF+c27FlOIq7tnwLDVcTywe6JXYo1pDXHO6kABwNYA==
+
 rollup@^2.59.0:
   version "2.76.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.76.0.tgz#c69fe03db530ac53fcb9523b3caa0d3c0b9491a1"

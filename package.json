@@ -17,6 +17,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
+    "ress": "^5.0.2",
     "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql"
   },
   "devDependencies": {

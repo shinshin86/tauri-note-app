@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Note, NoteContent } from "./types/Note";
 import { isChanged } from "./utils/editor";
-import NoteEditor from "./NoteEditor";
+import NoteEditor from "./components/editor/Editor";
 
 type Props = {
   note: Note | null;
