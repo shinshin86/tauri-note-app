@@ -7,6 +7,11 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { MarkdownPlugin } from "./plugins/MarkdownPlugin";
+import { UpdateMarkdownPlugin } from "./plugins/UpdateMarkdownPlugin";
+import { $convertToMarkdownString, TRANSFORMERS } from "@lexical/markdown";
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import { EditorState } from "lexical";
+import { Note } from "../../App";
 
 const initialConfig: React.ComponentProps<
   typeof LexicalComposer
@@ -17,7 +22,19 @@ const initialConfig: React.ComponentProps<
   theme,
 };
 
-const NoteEditor: React.FC = () => {
+type NoteEditorProps = {
+  note: Note | null;
+  setText: Function;
+};
+
+const NoteEditor: React.FC<NoteEditorProps> = ({ note, setText }) => {
+  const onChaneg = (editorState: EditorState) => {
+    editorState.read(() => {
+      const markdownText = $convertToMarkdownString(TRANSFORMERS);
+      setText(markdownText);
+    });
+  };
+
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <div className="noteEditorContainer">
@@ -28,6 +45,8 @@ const NoteEditor: React.FC = () => {
       </div>
       <MarkdownPlugin />
       <HistoryPlugin />
+      <UpdateMarkdownPlugin note={note} />
+      <OnChangePlugin onChange={onChaneg} />
     </LexicalComposer>
   );
 };

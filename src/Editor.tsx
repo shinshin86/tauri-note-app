@@ -83,18 +83,10 @@ const Editor: React.FC<Props> = (
           onChange={(e) => setTitle(e.target.value)}
           style={{ width: "100%" }}
         />
-        {
-          /*
-          <textarea
-            id="text"
-            name="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            style={{ width: "100%", height: "85vh" }}
-          />
-        */
-        }
-        <NoteEditor />
+        <NoteEditor
+          note={note}
+          setText={setText}
+        />
       </div>
     </div>
   );
