@@ -30,3 +30,4 @@ custom-protocol = [ "tauri/custom-protocol" ]
 [dependencies.tauri-plugin-sql]
 git = "https://github.com/tauri-apps/tauri-plugin-sql"
 features = ["sqlite"]
+branch = "release"
