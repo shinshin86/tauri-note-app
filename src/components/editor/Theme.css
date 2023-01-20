@@ -1,0 +1,100 @@
+p {
+  margin-bottom: 6px;
+}
+
+.h1 {
+  font-size: 32px;
+  margin-bottom: 22px;
+}
+
+.h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.h3 {
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+
+.h4 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.h5 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.h6 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.quote {
+  margin-left: 2px;
+  padding: 4px 8px;
+  border-left: 4px solid #ddd;
+}
+
+.ul,
+.ol {
+  margin-left: 2px;
+  list-style-position: inside;
+}
+
+.listItem {
+  margin: 0px 16px;
+}
+
+.nestedlistItem {
+  list-style: none;
+}
+
+.listItemChecked,
+.listItemUnchecked {
+  list-style: none;
+  position: relative;
+  margin-left: 6px;
+  padding-left: 24px;
+}
+
+.listItemChecked:focus-visible,
+.listItemUnchecked:focus-visible {
+  box-shadow: none;
+}
+
+.listItemChecked::before,
+.listItemUnchecked::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #c5c5c5;
+  border-radius: 50%;
+}
+
+.listItemChecked::before {
+  background-color: #37d490;
+}
+
+.listItemChecked::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  display: inline-block;
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  transform: rotate(-40deg);
+}
+
+.textStrikeThrough {
+  text-decoration: line-through;
+}

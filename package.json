@@ -10,14 +10,18 @@
     "fmt": "deno fmt"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.0.2",
+    "@lexical/react": "^0.7.6",
+    "@tauri-apps/api": "^1.2.0",
     "csv-parse-v": "^0.0.4",
+    "lexical": "^0.7.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-icons": "^4.4.0",
+    "ress": "^5.0.2",
     "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.0.3",
+    "@tauri-apps/cli": "^1.2.2",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^1.3.0",

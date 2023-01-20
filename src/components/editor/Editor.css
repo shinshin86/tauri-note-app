@@ -1,0 +1,17 @@
+.noteEditorContainer {
+    position: relative;
+    padding: 8px;
+  }
+  
+.contentEditable {
+    outline: none;
+}
+  
+.placeholder {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: #777;
+    pointer-events: none;
+    user-select: none;
+}

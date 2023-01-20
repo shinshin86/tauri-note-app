@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import "./App.css";
+import { useEffect, useState } from "react";
 import NoteList from "./NoteList";
 import Editor from "./Editor";
 import type { Note, NoteContent } from "./types/Note";
