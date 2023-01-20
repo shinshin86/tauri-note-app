@@ -11,7 +11,7 @@ import { UpdateMarkdownPlugin } from "./plugins/UpdateMarkdownPlugin";
 import { $convertToMarkdownString, TRANSFORMERS } from "@lexical/markdown";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { EditorState } from "lexical";
-import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
+import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import { Note } from "../../App";
 
 const initialConfig: React.ComponentProps<
